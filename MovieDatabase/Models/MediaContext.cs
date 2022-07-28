@@ -10,8 +10,13 @@ namespace MovieDatabase.Models
     {
         public MediaContext(DbContextOptions<MediaContext> options) : base(options)
         { }
-
+        public MediaContext() : base() { }
         public DbSet<Media> Medias { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
